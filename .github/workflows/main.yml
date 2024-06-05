@@ -12,6 +12,9 @@ jobs:
             repository_name: BrezyWeather
             image_tag: 1.0.0
             container_name: brezy
+            ACR_USERNAME: crbrezyweatherprodala
+            ACR_SERVER: crbrezyweatherprodala.azurecr.io
+            ACR_PASSWORD: 3KmWoTt8AbAfrJbwluPjvxZi10zeQzzJ8Q3+w6l9/i+ACRA1/8Ek
         steps:
         -   name: Get the code
             uses: actions/checkout@v4
