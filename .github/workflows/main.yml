@@ -1,0 +1,26 @@
+name: udemy-workflow
+on:
+ push:
+    branches:
+    - main
+
+jobs:
+    build:
+    
+        runs-on: ubuntu-latest
+        env:
+            repository_name: BrezyWeather
+            image_tag: 1.0.0
+            container_name: brezy
+        steps:
+        -   name: Get the code
+            uses: actions/checkout@v4
+        -   name: build image
+            run: docker build . -t ${{container_name}}:${{image_tag}}
+        -   name: login acr
+            run: docker login --username ${{ACR_USERNAME}} --password ${{ACR_PASSWORD}} ${{ACR_SERVER}}
+        -   name: push to acr
+            run: docker push ${{ACR_SERVER}}/${{container_name}}:${{image_tag}}   
+
+
+    
