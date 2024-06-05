@@ -20,11 +20,11 @@ jobs:
         -   name: Get the code
             uses: actions/checkout@v4
         -   name: build image
-            run: docker build . -t ${{container_name}}:${{image_tag}}
+            run: docker build . -t ${{env.container_name}}:${{env.image_tag}}
         -   name: login acr
-            run: docker login --username ${{ACR_USERNAME}} --password ${{ACR_PASSWORD}} ${{ACR_SERVER}}
+            run: docker login --username ${{env.ACR_USERNAME}} --password ${{env.ACR_PASSWORD}} ${{env.ACR_SERVER}}
         -   name: push to acr
-            run: docker push ${{ACR_SERVER}}/${{container_name}}:${{image_tag}}   
+            run: docker push ${{env.ACR_SERVER}}/${{.envcontainer_name}}:${{env.image_tag}}   
 
 
     
