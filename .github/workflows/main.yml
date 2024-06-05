@@ -21,6 +21,8 @@ jobs:
             uses: actions/checkout@v4
         -   name: build image
             run: docker build . -t ${{env.container_name}}:${{env.image_tag}}
+        -   name: docker tag 
+            run: docker tag ${{env.container_name}}:${{env.image_tag}}  ${{env.ACR_SERVER}}/${{env.container_name}}:${{env.image_tag}} 
         -   name: login acr
             run: docker login --username ${{env.ACR_USERNAME}} --password ${{env.ACR_PASSWORD}} ${{env.ACR_SERVER}}
         -   name: push to acr
