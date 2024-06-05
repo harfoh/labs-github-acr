@@ -24,7 +24,7 @@ jobs:
         -   name: login acr
             run: docker login --username ${{env.ACR_USERNAME}} --password ${{env.ACR_PASSWORD}} ${{env.ACR_SERVER}}
         -   name: push to acr
-            run: docker push ${{env.ACR_SERVER}}/${{.envcontainer_name}}:${{env.image_tag}}   
+            run: docker push ${{env.ACR_SERVER}}/${{env.container_name}}:${{env.image_tag}}   
 
 
     
